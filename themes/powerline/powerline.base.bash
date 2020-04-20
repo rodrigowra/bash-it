@@ -138,6 +138,10 @@ function __powerline_clock_prompt {
   echo "$(date +"${THEME_CLOCK_FORMAT}")|${CLOCK_THEME_PROMPT_COLOR}"
 }
 
+function __powerline_mem_prompt {
+  echo "$(free | awk '/Mem/{printf("Memory:%d mb"), $3/(2^10)}')|${MEMORY_THEME_PROMPT_COLOR}"
+}
+
 function __powerline_battery_prompt {
   local color=""
   local battery_status="$(battery_percentage 2> /dev/null)"
